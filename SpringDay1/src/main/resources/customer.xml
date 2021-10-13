@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd">
+<bean id="cust" class="practical.Customer">
+    <property name="name" value="Kalam"/>
+    <property name="products">
+     <list>
+         <ref bean="prod1"/>
+         <ref bean="prod2"/>
+     </list>
+
+    </property>
+
+</bean>
+    <bean id="prod1" class="practical.Product" >
+        <constructor-arg name="name" value="HP Laptop"/>
+        <constructor-arg name="price" value="40000"/>
+    </bean>
+    <bean id="prod2" class="practical.Product" scope="prototype" >
+        <constructor-arg name="name" value="headset"/>
+        <constructor-arg name="price" value="3000"/>
+    </bean>
+
+
+</beans>

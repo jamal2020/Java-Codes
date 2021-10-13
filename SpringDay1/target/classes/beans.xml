@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="accounts" class="org.example.model.Account" scope="prototype">
+        <property name="name" value="HDFC" />
+        <property name="balance" value="20000"/>
+   </bean>
+    <bean id="holder" class="org.example.model.AccountHolder"  scope="prototype">
+        <property name="name" value="shiju"/>
+        <property name="address" value="mumbai"/>
+        <property name="account" ref="accounts" />
+    </bean>
+    <bean id="holder1" class="org.example.model.AccountHolder">
+        <constructor-arg name="name" value="eduramp"/>
+        <constructor-arg name="address" value="mumbai"/>
+        <constructor-arg name="account" ref="accounts" />
+    </bean>
+<!--    <bean id="accounts" class="java.lang.String">-->
+
+<!--    </bean>-->
+    <bean id="springDB" class="practical.SpringDBConnector" lazy-init="true" destroy-method="close" >
+        <constructor-arg name="driverClass" value="org.h2.Driver"/>
+        <constructor-arg name="url" value="jdbc:h2:file:c:/user/jamal ansari/test2"/>
+        <constructor-arg name="username" value="sa" />
+    </bean>
+
+</beans>
